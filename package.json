@@ -1,0 +1,106 @@
+{
+  "name": "ergonomic-ide-assistant",
+  "displayName": "Ergonomic IDE Assistant",
+  "description": "Plugin do VS Code wspierający profilaktykę chorób zawodowych (przerwy, ergonomia, kamera).",
+  "version": "0.0.4",
+  "publisher": "twoje-nazwisko",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:ergonomicIde.openErgoPanel",
+    "onCommand:ergonomicIde.markBreak",
+    "onStartupFinished",
+    "onView:ergonomicIde.statsView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ergonomicIde.openErgoPanel",
+        "title": "Ergonomia: Otwórz panel ergonomiczny"
+      },
+      {
+        "command": "ergonomicIde.markBreak",
+        "title": "Ergonomia: Zaznacz przerwę wykonaną"
+      },
+      {
+        "command": "ergonomicIde.debugStats",
+        "title": "Ergonomia: Debug – pokaż snapshot statystyk"
+      }
+    ],
+    "configuration": {
+      "title": "Ergonomic IDE Assistant",
+      "properties": {
+        "ergonomicIde.workIntervalMinutes": {
+          "type": "number",
+          "default": 25,
+          "minimum": 5,
+          "maximum": 180,
+          "description": "Długość ciągłej pracy (w minutach) przed przypomnieniem o głównej przerwie."
+        },
+        "ergonomicIde.microBreakIntervalMinutes": {
+          "type": "number",
+          "default": 10,
+          "minimum": 0,
+          "maximum": 180,
+          "description": "Co ile minut pokazywać przypomnienie o mikroprzerwie (0 = wyłączone)."
+        },
+        "ergonomicIde.dailyBreakGoal": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Docelowa liczba przerw dziennie."
+        },
+        "ergonomicIde.continuousCameraMonitoring": {
+          "type": "boolean",
+          "default": false,
+          "description": "Jeżeli włączone, rozszerzenie cyklicznie wykonuje zdjęcia z kamery na potrzeby analizy postawy/uwagi."
+        },
+        "ergonomicIde.enableCamera": {
+          "type": "boolean",
+          "default": true,
+          "description": "Czy moduł kamery ma być aktywny w panelu ergonomii."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ergonomicIde",
+          "title": "Ergonomia",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ergonomicIde": [
+        {
+          "id": "ergonomicIde.statsView",
+          "name": "Statystyki pracy",
+          "type": "webview"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "prettier": "3.7.4",
+    "typescript": "^5.0.0",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "node-webcam": "^0.6.0"
+  }
+}
