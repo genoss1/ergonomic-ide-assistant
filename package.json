@@ -3,7 +3,10 @@
   "displayName": "Ergonomic IDE Assistant",
   "description": "Plugin do VS Code wspierający profilaktykę chorób zawodowych (przerwy, ergonomia, kamera).",
   "version": "0.0.4",
-  "publisher": "twoje-nazwisko",
+  "publisher": "mateusz-blaszczynski",
+  "repository": { "type": "git", "url": "https://github.com/genoss1/ergonomic-ide-assistant.git" },
+  "license": "MIT",
+  "icon": "media/icon.png",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -90,15 +93,13 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "package": "vsce package"
+    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "@types/vscode": "^1.90.0",
     "prettier": "3.7.4",
-    "typescript": "^5.0.0",
-    "vsce": "^2.15.0"
+    "typescript": "^5.0.0"
   },
   "dependencies": {
     "node-webcam": "^0.6.0"
