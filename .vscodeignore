@@ -1,5 +1,4 @@
 out/test/**
-node_modules/**
 .vscode/**
 .vscode-test/**
 .git/**
