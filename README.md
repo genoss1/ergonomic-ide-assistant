@@ -7,15 +7,15 @@ Wtyczka przypomina o przerwach, podpowiada ćwiczenia ergonomiczne, prezentuje s
 
 ---
 
-## ✨ Najważniejsze funkcje
+##  Najważniejsze funkcje
 
-### ⏱️ Przerwy i mikroprzerwy
+###  Przerwy i mikroprzerwy
 - przerwy główne po określonym czasie ciągłej pracy,
 - mikroprzerwy w krótszych odstępach,
 - uwzględnienie braku aktywności (aby ograniczyć „fałszywe” przypomnienia),
 - tryb **Focus** (czasowe wyciszenie przypomnień).
 
-### 🧘 Losowe ćwiczenia ergonomiczne
+###  Losowe ćwiczenia ergonomiczne
 - losowanie ćwiczeń z podziałem na kategorie:
   - oczy,
   - kręgosłup,
@@ -23,7 +23,7 @@ Wtyczka przypomina o przerwach, podpowiada ćwiczenia ergonomiczne, prezentuje s
   - relaks / oddech,
 - prezentacja ćwiczeń w panelu ergonomii (Webview).
 
-### 📊 Statystyki aktywności (boczny panel)
+###  Statystyki aktywności (boczny panel)
 Widok „Statystyki pracy” pokazuje m.in.:
 - aktywne minuty pracy (na podstawie aktywności w edytorze),
 - linie + / -,
@@ -37,14 +37,14 @@ Widok „Statystyki pracy” pokazuje m.in.:
 
 > Uwaga: część metryk ma charakter **przybliżony**, ponieważ VS Code nie udostępnia pełnych niskopoziomowych zdarzeń (np. „prawdziwe kliknięcia myszy”). W pracy dyplomowej opisano ograniczenia i sposoby ich minimalizacji (np. debounce).
 
-### 📷 Kamera (opcjonalnie)
+###  Kamera (opcjonalnie)
 - zdjęcie na żądanie w panelu ergonomii,
 - tryb cyklicznych zdjęć (monitoring w ujęciu prototypowym),
 - obraz przekazywany do Webview jako base64 (bez wysyłki do chmury).
 
 ---
 
-## ✅ Instalacja
+##  Instalacja
 
 ### 1) Instalacja z pliku `.vsix` (najprostsza)
 1. Pobierz plik `.vsix` z zakładki **Releases** w tym repozytorium.
@@ -58,7 +58,7 @@ Po instalacji zalecane: **Developer: Reload Window**.
 
 ---
 
-## 🧑‍💻 Uruchomienie w trybie developerskim (F5)
+##  Uruchomienie w trybie developerskim (F5)
 Jeśli chcesz uruchomić plugin jako projekt:
 
 ```bash
