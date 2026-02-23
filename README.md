@@ -46,7 +46,7 @@ Widok „Statystyki pracy” pokazuje m.in.:
 
 ##  Instalacja
 
-### 1) Instalacja z pliku `.vsix` (najprostsza)
+### Instalacja z pliku `.vsix`
 1. Pobierz plik `.vsix` z zakładki **Releases** w tym repozytorium.
 2. W VS Code:
    - Otwórz **Extensions**
