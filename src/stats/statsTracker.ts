@@ -3,7 +3,17 @@ import { StatsStore } from "./statsStore";
 import { StatsViewProvider } from "./statsView";
 
 export type ActivityRef = { value: number };
-
+/**
+ * Rejestruje nasłuchy zdarzeń VS Code, które zasilają statystyki.
+ *
+ * W tym miejscu wykonywane są także zabezpieczenia przed podwójnym naliczaniem
+ * (np. debounce dla selekcji i przełączeń edytora).
+ *
+ * @param context Kontekst rozszerzenia (subskrypcje).
+ * @param store Magazyn statystyk.
+ * @param view Provider widoku statystyk (do odświeżania UI).
+ * @param lastActivityTime Referencja do czasu ostatniej aktywności.
+ */
 export function registerStatsTracking(
   context: vscode.ExtensionContext,
   store: StatsStore,

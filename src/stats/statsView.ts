@@ -1,6 +1,10 @@
 import * as vscode from "vscode";
 import { StatsStore } from "./statsStore";
-
+/**
+ * Provider widoku WebView w Activity Bar.
+ *
+ * Renderuje panel statystyk oraz cyklicznie odświeża dane przez `postMessage`.
+ */
 export class StatsViewProvider implements vscode.WebviewViewProvider {
   public static readonly viewType = "ergonomicIde.statsView";
 
@@ -8,7 +12,11 @@ export class StatsViewProvider implements vscode.WebviewViewProvider {
   private refreshTimer?: NodeJS.Timeout;
 
   constructor(private readonly store: StatsStore) {}
-
+  /**
+   * Metoda wywoływana przez VS Code przy tworzeniu widoku.
+   *
+   * @param webviewView Obiekt widoku z API VS Code.
+   */
   resolveWebviewView(webviewView: vscode.WebviewView) {
     this.view = webviewView;
     webviewView.webview.options = { enableScripts: true };
@@ -32,7 +40,9 @@ export class StatsViewProvider implements vscode.WebviewViewProvider {
 
     this.postUpdate();
   }
-
+  /**
+   * Wysyła aktualne statystyki do WebView.
+   */
   public postUpdate() {
     if (!this.view) return;
     this.view.webview.postMessage({ command: "stats", data: this.store.snapshot() });

@@ -1,5 +1,7 @@
 import * as vscode from "vscode";
-
+/**
+ * Snapshot statystyk prezentowanych w panelu bocznym.
+ */
 export type StatsSnapshot = {
   activeMinutesToday: number;
   linesAdded: number;
@@ -14,6 +16,12 @@ export type StatsSnapshot = {
   breaksToday: number;
 };
 
+/**
+ * Magazyn i przelicznik statystyk pracy użytkownika.
+ *
+ * Statystyki są liczone przyrostowo na podstawie zdarzeń z VS Code.
+ * Zawiera normalizację CRLF → LF (żeby Enter nie liczył się jako 2 znaki na Windows).
+ */
 export class StatsStore {
   private dayKey = this.todayKey();
 
@@ -52,7 +60,12 @@ export class StatsStore {
     this.saves = 0;
     this.breaksToday = 0;
   }
-
+  /**
+   * Aktualizuje licznik aktywnego czasu pracy (bez długiej bezczynności).
+   *
+   * @param inactivityThresholdMs Próg bezczynności (ms).
+   * @param lastActivityTime Timestamp ostatniej aktywności użytkownika.
+   */
   tickActive(inactivityThresholdMs: number, lastActivityTime: number) {
     this.ensureDay();
     const now = Date.now();
@@ -64,6 +77,11 @@ export class StatsStore {
     }
   }
 
+  /**
+   * Aktualizuje liczniki na podstawie zdarzenia zmiany dokumentu (linie/znaki/klawisze approx).
+   *
+   * @param e Zdarzenie zmiany dokumentu (VS Code).
+   */
   applyTextChange(e: vscode.TextDocumentChangeEvent) {
     this.ensureDay();
 
@@ -86,7 +104,10 @@ export class StatsStore {
       this.linesDeleted += Math.max(0, removedLines);
     }
   }
-
+  /**
+   * Generuje aktualny snapshot statystyk do UI.
+   * @returns Obiekt `StatsSnapshot`.
+   */
   snapshot(): StatsSnapshot {
     const activeMinutes = Math.floor(this.activeMs / 60000);
     const minutes = Math.max(1, activeMinutes);
@@ -107,7 +128,7 @@ export class StatsStore {
       breaksToday: this.breaksToday,
     };
   }
-
+  
   private todayKey(): string {
     return new Date().toISOString().slice(0, 10);
   }

@@ -2,7 +2,19 @@ import * as vscode from "vscode";
 import { loadConfig, ErgoConfig } from "../config";
 import { registerBreak } from "../storage/breaksStorage";
 import { StatsModule } from "../stats/statsModule";
-
+/**
+ * Moduł zarządzania przerwami i ergonomią pracy.
+ *
+ * Odpowiada za:
+ * - przypomnienia o przerwach (główne i mikroprzerwy),
+ * - tryb fokus,
+ * - status bar z czasem od ostatniej przerwy,
+ * - integrację z modułem statystyk (aktywny czas, licznik przerw).
+ *
+ * @param context Kontekst rozszerzenia.
+ * @param output Kanał logów.
+ * @param stats Moduł statystyk (do aktualizacji liczników i czasu aktywnego).
+ */
 export function createBreakModule(
   context: vscode.ExtensionContext,
   output: vscode.OutputChannel,

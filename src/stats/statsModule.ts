@@ -8,7 +8,16 @@ export type StatsModule = {
   provider: StatsViewProvider;
   lastActivityTime: ActivityRef;
 };
-
+/**
+ * Inicjalizuje moduł statystyk:
+ * - rejestruje WebViewViewProvider,
+ * - podpina eventy śledzące aktywność,
+ * - rejestruje komendy debugowe.
+ *
+ * @param context Kontekst rozszerzenia.
+ * @param output Kanał logów.
+ * @returns Obiekt modułu statystyk.
+ */
 export function createStatsModule(
   context: vscode.ExtensionContext,
   output: vscode.OutputChannel

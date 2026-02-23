@@ -3,7 +3,17 @@ import { loadConfig } from "../config";
 import { CameraManager } from "../camera/cameraManager";
 import { getTodayBreaks } from "../storage/breaksStorage";
 import { StatsModule } from "../stats/statsModule";
-
+/**
+ * Moduł UI głównego panelu ergonomii (WebView Panel).
+ *
+ * Panel zawiera:
+ * - proste ćwiczenia ergonomiczne,
+ * - obsługę zdjęcia z kamery (przez Extension Host),
+ * - komunikację webview ↔ extension.
+ *
+ * @param context Kontekst rozszerzenia.
+ * @param output Kanał logów.
+ */
 export function createErgoPanel(
   context: vscode.ExtensionContext,
   output: vscode.OutputChannel,
